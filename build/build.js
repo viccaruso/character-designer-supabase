@@ -30,7 +30,7 @@ let bottomCount = 0;
 
 headDropdown.addEventListener('change', async() => {
     // increment the correct count in state
-
+    headCount++;
     // update the head in supabase with the correct data
     refreshData();
 });
