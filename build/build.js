@@ -103,14 +103,17 @@ async function fetchAndDisplayCharacter() {
     // if the character has a head, display the head in the dom
     if (character.head) {
         headEl.style.backgroundImage = `url(../assets/${character.head}-head.png)`;
+        headDropdown.value = `${character.head}`;
     }
     // if the character has a middle, display the middle in the dom
     if (character.middle) {
         middleEl.style.backgroundImage = `url(../assets/${character.middle}-middle.png)`;
+        middleDropdown.value = `${character.middle}`;
     }
     // if the character has a pants, display the pants in the dom
     if (character.bottom) {
         bottomEl.style.backgroundImage = `url(../assets/${character.bottom}-pants.png)`;
+        bottomDropdown.value = `${character.bottom}`;
     }
     // loop through catchphrases and display them to the dom (clearing out old dom if necessary)
     while (catchphrasesEl.firstChild) {
@@ -127,4 +130,3 @@ function refreshData() {
     displayStats();
     fetchAndDisplayCharacter();
 }
- 
