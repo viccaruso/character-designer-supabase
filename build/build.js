@@ -3,10 +3,7 @@ import {
     getCharacter,
     logout, 
     createCharacter,
-    updateBottom,
-    updateHead,
-    updateMiddle,
-    updateCatchphrases
+    updateCharacter
 } from '../fetch-utils.js';
 
 checkAuth();
@@ -33,7 +30,7 @@ headDropdown.addEventListener('change', async() => {
     // increment the correct count in state
     headCount++;
     // update the head in supabase with the correct data
-    await updateHead(headDropdown.value);
+    await updateCharacter('head', headDropdown.value);
     
     refreshData();
 });
@@ -43,7 +40,7 @@ middleDropdown.addEventListener('change', async() => {
     // increment the correct count in state
     middleCount++;
     // update the middle in supabase with the correct data
-    await updateMiddle(middleDropdown.value);
+    await updateCharacter('middle', middleDropdown.value);
     refreshData();
 });
 
@@ -52,7 +49,7 @@ bottomDropdown.addEventListener('change', async() => {
     // increment the correct count in state
     bottomCount++;
     // update the bottom in supabase with the correct data
-    await updateBottom(bottomDropdown.value);
+    await updateCharacter('bottom', bottomDropdown.value);
     refreshData();
 });
 
@@ -63,7 +60,7 @@ catchphraseButton.addEventListener('click', async() => {
     // update the catchphrases array locally by pushing the new catchphrase into the old array
     catchphrases.push(catchphraseInput.value);
     // update the catchphrases in supabase by passing the mutated array to the updateCatchphrases function
-    await updateCatchphrases(catchphrases);
+    await updateCharacter('catchphrases', catchphrases);
     refreshData();
     // clear catchphrase input field
     catchphraseInput.value = '';
