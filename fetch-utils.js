@@ -10,6 +10,10 @@ export async function createCharacter(character){
     };
 
     // use the newCharacter to create a single new character for this user in supabase
+    const response = await client
+        .from('characters')
+        .insert([newCharacter])
+        .single();
     return checkError(response);
 }
 
@@ -17,6 +21,10 @@ export async function updateHead(value){
     const currentUserId = client.auth.user().id;
 
     // in supabase, update the head property
+    const response = await client
+        .from('characters')
+        .update({ head: value })
+        .match({ user_id: currentUserId });
     // for the character whose user_id match's the currently logged in user's id
 
     return checkError(response);    
@@ -27,9 +35,13 @@ export async function updateMiddle(value){
     const currentUserId = client.auth.user().id;
 
     // in supabase, update the middle property
+    const response = await client
+        .from('characters')
+        .update({ middle: value })
+        .match({ user_id: currentUserId });
     // for the character whose user_id match's the currently logged in user's id
 
-    return checkError(response);    
+    return checkError(response);
 }
 
 
@@ -37,15 +49,23 @@ export async function updateBottom(value){
     const currentUserId = client.auth.user().id;
 
     // in supabase, update the bottom property
+    const response = await client
+        .from('characters')
+        .update({ bottom: value })
+        .match({ user_id: currentUserId });
     // for the character whose user_id match's the currently logged in user's id
 
     return checkError(response);    
 }
 
-export async function updateChatchphrases(value){
+export async function updateCatchphrases(value){
     const currentUserId = client.auth.user().id;
 
     // in supabase, update the catchphrases property
+    const response = await client
+        .from('characters')
+        .update({ catchphrases: value })
+        .match({ user_id: currentUserId });
     // for the character whose user_id match's the currently logged in user's id
 
     return checkError(response);    
