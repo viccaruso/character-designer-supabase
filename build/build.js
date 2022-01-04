@@ -30,16 +30,16 @@ let bottomCount = 0;
 window.addEventListener('load', async() => {
     // on load, attempt to fetch this user's character and store in state
     character = await getCharacter();
-    // if this user turns out not to have a character (returned character is "falsey")
+    // if this user turns out not to have a character (meaning the returned character is "falsey")
     if (!character) {
-        // create a new character with correct defaults for all properties (head, middle, bottom, catchphrases)
+        // create a new character object with defaults for all properties (head, middle, bottom, catchphrases)
         const defaultCharacter = {
             head: 'bird',
             middle: 'blue',
             bottom: 'leg',
             catchphrases: [],
         };
-        // store this newly created character in local state
+        // store this newly created character in local state after creating it 
         character = await createCharacter(defaultCharacter);
     }
 
